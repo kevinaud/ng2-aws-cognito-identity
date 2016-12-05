@@ -1,0 +1,35 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/example/dist
+/example/tmp
+
+# dependencies
+/node_modules
+/example/node_modules
+/example/bower_components
+
+# IDEs and editors
+/.idea
+/.vscode
+.project
+.classpath
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/example/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/example/typings
+
+# e2e
+/example/e2e/*.js
+/example/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
