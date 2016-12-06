@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 //import { BlogPost } from '../blog/blog-post';
 import { AwsService } from './aws.service';
 import { ApiClientService } from './api-client.service';
+import { Regex } from './regex.service';
 
 @Injectable()
 export class ApiGatewayService {
@@ -103,56 +104,8 @@ export class ApiGatewayService {
     return method.substr(method.length - 6) === 'Delete';
   }
 
-  /*getAllBlogPosts() {
-
-    return this.client.blogPostGet();
-
+  getRequestMethod(endpoint) {
+      return Regex.RequestMethod(endpoint);
   }
-
-  addBlogPost(post) {
-
-    let params = {};
-    let body = post;
-    let additionalParams = {};
-
-    return this.client.blogPostPost(params, body, additionalParams);
-
-  }
-
-  getBlogPost(id: string) {
-    
-    var params = {
-        id: id
-    };
-    let body = {};
-    let additionalParams = {};
-
-    return this.client.blogPostIdGet(params, body, additionalParams);
-  
-  }
-
-  deleteBlogPost(id: string) {
-  
-    var params = {
-        id: id
-    };
-    let body = {};
-    let additionalParams = {};
-
-    return this.client.blogPostIdDelete(params, body, additionalParams);
-  
-  }
-
-  updateBlogPost(id: string) {
-  
-    var params = {
-        id: id
-    };
-    let body = {};
-    let additionalParams = {};
-
-    return this.client.blogPostIdPost(params, body, additionalParams);
-  
-  }*/
 
 }

@@ -17,5 +17,3 @@ let params = {
 let body = {
   title: ''
 }
-
-api.endpoint('podcastIdEpisode').post(params, body)

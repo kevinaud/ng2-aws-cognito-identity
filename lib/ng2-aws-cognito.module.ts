@@ -5,6 +5,7 @@ import { ApiGatewayService } from './api-gateway.service';
 import { AwsService } from './aws.service';
 import { AwsCognitoConfig } from './aws-cognito-config';
 import { ApigClientFactory } from './apig-client-factory';
+import { Regex } from './regex.service';
 
 declare var apigClientFactory: any;
 
@@ -15,7 +16,8 @@ class ApigClientFactory { }
     ApiClientService,
     ApiGatewayService,
     AwsService,
-    AwsCognitoConfig
+    AwsCognitoConfig,
+    Regex
   ]
 })
 export class Ng2AwsCognitoModule {
