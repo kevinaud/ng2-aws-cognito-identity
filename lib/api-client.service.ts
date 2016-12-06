@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-declare var apigClientFactory: any;
+import { ApigClientFactory } from './apig-client-factory';
 
 @Injectable()
 export class ApiClientService {
 
-  factory = apigClientFactory;
+  $client: BehaviorSubject<any>;
 
-  constructor() {
+  constructor(private factory: ApigClientFactory) {
 
-    //this.$factory = new BehaviorSubject(this.factory.newClient());
+    
+    this.$client = new BehaviorSubject(this.factory.newClient());
 
     /*user.authStatus.subscribe((authenticated) => {
       if(authenticated) {
