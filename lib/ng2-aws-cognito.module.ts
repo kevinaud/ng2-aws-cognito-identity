@@ -25,3 +25,4 @@ export class Ng2AwsCognitoModule {
   }
 
 }
+

@@ -1,0 +1,6 @@
+for matching generated function names
+^([a-z]+)(([A-Z][a-z]*)+)
+tests:
+    podcast
+    podcastId
+    podcastIdEpisode
