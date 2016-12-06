@@ -4,3 +4,9 @@ tests:
     podcast
     podcastId
     podcastIdEpisode
+
+api
+    endpoint(path)
+        post(params, body)
+        get(params)
+            subscribe(func,func)
