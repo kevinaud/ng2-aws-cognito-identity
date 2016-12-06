@@ -8,7 +8,7 @@ import { ApiClientService } from './api-client.service';
 @Injectable()
 export class ApiGatewayService {
 
-  client;
+  client = "";
   authenticating;
 
   public endpoints = {};
@@ -103,7 +103,7 @@ export class ApiGatewayService {
     return method.substr(method.length - 6) === 'Delete';
   }
 
-  getAllBlogPosts() {
+  /*getAllBlogPosts() {
 
     return this.client.blogPostGet();
 
@@ -153,6 +153,6 @@ export class ApiGatewayService {
 
     return this.client.blogPostIdPost(params, body, additionalParams);
   
-  }
+  }*/
 
 }

@@ -23,4 +23,9 @@ describe('Service: ApiGatewayService', () => {
   it('should ...', inject([ ApiGatewayService ], (service: ApiGatewayService) => {
     expect(service).toBeTruthy();
   }));
+  
+  it('should have a client', inject([ ApiGatewayService ], (service: ApiGatewayService) => {
+    expect(service.hasOwnProperty('client')).toBeTruthy();
+  }));
+
 });

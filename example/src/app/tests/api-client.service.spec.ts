@@ -9,6 +9,22 @@ class AwsServiceStub {
   
 }
 
+const apigClientFactory = {
+  newClient: function(credentials) {
+    
+    if(credentials) {
+      return {
+        auth: true
+      }
+    } else {
+      return {
+        auth: false
+      }
+    }
+    
+  }
+}
+
 describe('Service: ApiClientService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,4 +38,9 @@ describe('Service: ApiClientService', () => {
   it('should ...', inject([ ApiClientService ], (service: ApiClientService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should initialize itself with a client', inject([ ApiClientService ], (service: ApiClientService) => {
+    expect(service.client).toBeTruthy();
+  }));
+
 });

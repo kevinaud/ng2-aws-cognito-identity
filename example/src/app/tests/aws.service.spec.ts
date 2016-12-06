@@ -26,3 +26,4 @@ describe('Service: AwsService', () => {
     expect(service).toBeTruthy();
   }));
 });
+
