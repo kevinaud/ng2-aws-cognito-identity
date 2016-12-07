@@ -2,16 +2,37 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ApigClientFactory } from './apig-client-factory';
+import { IamCredentials } from './iam-credentials';
+import { UserService } from './user.service';
 
 @Injectable()
 export class ApiClientService {
 
   $client: BehaviorSubject<any>;
 
-  constructor(private factory: ApigClientFactory) {
+  constructor(private factory: ApigClientFactory, public user: UserService) {
 
-    
     this.$client = new BehaviorSubject(this.factory.newClient());
+
+    this.user.$auth.subscribe((authenticated) => {
+
+      if (authenticated) {
+
+        let iamCredentials: IamCredentials = {
+          accessKey: '',
+          secretKey: '',
+          sessionToken: '',
+          region: ''
+        }
+        this.$client.next(this.factory.newClient(iamCredentials));
+
+      } else {
+
+        this.$client.next(this.factory.newClient());
+
+      }
+
+    });
 
     /*user.authStatus.subscribe((authenticated) => {
       if(authenticated) {
