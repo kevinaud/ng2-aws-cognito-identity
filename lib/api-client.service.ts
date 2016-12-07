@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-import { ApigClientFactory } from './apig-client-factory';
-import { IamCredentials } from './iam-credentials';
-import { UserService } from './user.service';
+import { ApigClientFactory } from "./apig-client-factory";
+import { IAMCredentials } from "./iam-credentials";
+import { UserService } from "./user.service";
 
 @Injectable()
 export class ApiClientService {
@@ -18,12 +18,12 @@ export class ApiClientService {
 
       if (authenticated) {
 
-        let iamCredentials: IamCredentials = {
-          accessKey: '',
-          secretKey: '',
-          sessionToken: '',
-          region: ''
-        }
+        let iamCredentials: IAMCredentials = {
+          accessKey: "",
+          secretKey: "",
+          sessionToken: "",
+          region: ""
+        };
         this.$client.next(this.factory.newClient(iamCredentials));
 
       } else {
@@ -44,15 +44,15 @@ export class ApiClientService {
             return;
           }
 
-          // We'll create an instance of our API Gateway client again
-          // This time we'll pass in the required keys that will authenticate the request
+          // We"ll create an instance of our API Gateway client again
+          // This time we"ll pass in the required keys that will authenticate the request
           // The API Gateway SDK will take care of transforming these keys into the appropriate
           // header and will send out the request to our endpoint.
           let authClient = ref.factory.newClient({
             accessKey: aws.AWS.config.credentials.accessKeyId,
             secretKey: aws.AWS.config.credentials.secretAccessKey,
             sessionToken: aws.AWS.config.credentials.sessionToken,
-            region: 'us-east-1'
+            region: "us-east-1"
           });
           
           ref.$factory.next(authClient);
@@ -60,7 +60,7 @@ export class ApiClientService {
         });
       }
     });*/
-    
+
   }
 
 }

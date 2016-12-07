@@ -1,4 +1,4 @@
-export interface IamCredentials {
+export interface IAMCredentials {
   accessKey: string;
   secretKey: string;
   sessionToken: string;

@@ -1,51 +1,51 @@
 /* tslint:disable:no-unused-variable */
-import { TestBed, async, inject, fakeAsync, tick } from '@angular/core/testing';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { TestBed, async, inject, fakeAsync, tick } from "../example/node_modules/@angular/core/testing";
+import { Injectable } from "../example/node_modules/@angular/core";
+import { BehaviorSubject } from "../example/node_modules/rxjs";
 
-import { ApiClientService } from '../../../../lib/api-client.service';
-import { ApigClientFactory } from '../../../../lib/apig-client-factory';
-import { AwsService } from '../../../../lib/aws.service';
-import { UserService } from '../../../../lib/user.service';
+import { ApiClientService } from "../lib/api-client.service";
+import { ApigClientFactory } from "../lib/apig-client-factory";
+import { AwsService } from "../lib/aws.service";
+import { UserService } from "../lib/user.service";
 
 class AwsServiceStub {
-  
+
 }
 
 const unauthenticatedClient = {
   auth: false
-}
+};
 
 const authenticatedClient = {
   auth: true
-}
+};
 
 const apigClientFactoryStub = {
   newClient: function(credentials) {
-    
-    if(credentials) {
+
+    if (credentials) {
       return authenticatedClient;
     } else {
       return unauthenticatedClient;
     }
 
   }
-}
+};
 
 @Injectable()
 class UserServiceStub {
   auth = "test";
-  //$auth: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  // $auth: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public stub = true;
 
   constructor() { }
 
   login(username, password) {
-    //this.$auth.next(true);
+    // this.$auth.next(true);
   }
 
   logout() {
-    //this.$auth.next(false);
+    // this.$auth.next(false);
   }
 
   isStub() {
@@ -53,51 +53,51 @@ class UserServiceStub {
   }
 }
 
-describe('Service: ApiClientService', () => {
+describe("Service: ApiClientService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         ApiClientService,
         { provide: AwsService, useValue: AwsServiceStub },
         { provide: ApigClientFactory, useValue: apigClientFactoryStub},
-        //{ provide: UserService, useValue: UserServiceStub },
+        // { provide: UserService, useValue: UserServiceStub },
         UserService
       ]
     });
   });
 
-  it('should ...', inject([ ApiClientService ], (service: ApiClientService) => {
+  it("should ...", inject([ ApiClientService ], (service: ApiClientService) => {
     expect(service).toBeTruthy();
   }));
 
-  it('should get the injected apigClientFactory', inject([ ApiClientService ], (service: ApiClientService) => {
+  it("should get the injected apigClientFactory", inject([ ApiClientService ], (service: ApiClientService) => {
 
     service.$client.subscribe((client) => {
       expect(client).toEqual(unauthenticatedClient);
     });
-  
+
   }));
 
-  it('should get the injected apigClientFactory', inject([ ApiClientService ], (service: ApiClientService) => {
+  it("should get the injected apigClientFactory", inject([ ApiClientService ], (service: ApiClientService) => {
 
     service.$client.subscribe((client) => {
       expect(client).toEqual(unauthenticatedClient);
     });
-  
+
   }));
 
-  it('should automatically change to an authenticated client when the user logs in', 
+  it("should automatically change to an authenticated client when the user logs in",
     inject([ ApiClientService, UserService ], (service: ApiClientService, user: UserService) => {
 
-    var authStatus;
-    var clientAuth;
-    var authChanged = false;
-    var clientChanged = false;
+    let authStatus;
+    let clientAuth;
+    let authChanged = false;
+    let clientChanged = false;
 
     user.$auth.subscribe((auth) => {
       authStatus = auth;
 
-      if(clientChanged) {
+      if (clientChanged) {
         clientChanged = false;
         expect(clientAuth).toEqual(authStatus);
       } else {
@@ -109,7 +109,7 @@ describe('Service: ApiClientService', () => {
     service.$client.subscribe((client) => {
       clientAuth = client.auth;
 
-      if(authChanged) {
+      if (authChanged) {
         authChanged = false;
         expect(clientAuth).toEqual(authStatus);
       } else {
@@ -118,17 +118,17 @@ describe('Service: ApiClientService', () => {
 
     });
 
-    spyOn(user, 'login').and.callFake((username, password) => {
+    spyOn(user, "login").and.callFake((username, password) => {
       user.$auth.next(true);
     });
 
-    spyOn(user, 'logout').and.callFake(() => {
+    spyOn(user, "logout").and.callFake(() => {
       user.$auth.next(false);
     });
-      
-    user.login('username', 'password');
+
+    user.login("username", "password");
     user.logout();
-    
+
   }));
 
 });
