@@ -14,61 +14,12 @@ export class ApiGatewayService {
 
   public endpoints = {};
 
-  constructor(private aws: AwsService, private apiClientService: ApiClientService) {
+  constructor(
+      private aws: AwsService, 
+      private apiClientService: ApiClientService, 
+      private regex: Regex) {
     
     var ref = this;
-    /*this.apiClientService.$factory.subscribe((client) => {
-      ref.client = client;
-      
-      Object.keys(client).forEach((method) => {
-        
-        if (this.isPostEndpoint(method)) {
-          let endpoint = method.substr(0, method.length - 4)
-
-          let postMethod = {
-            post: ref.apiRequest(ref, endpoint, 'Post')
-          }
-          this.endpoints[endpoint] = Object.assign({}, this.endpoints[endpoint], postMethod);
-
-        } else if (this.isPutEndpoint(method)) {
-          let endpoint = method.substr(0, method.length - 3)
-          
-          let putMethod = {
-            put: ref.apiRequest(ref, endpoint, 'Put')
-          }
-          this.endpoints[endpoint] = Object.assign({}, this.endpoints[endpoint], putMethod);
-
-        } else if (this.isGetEndpoint(method)) {
-          let endpoint = method.substr(0, method.length - 3)
-          
-          let getMethod = {
-            get: ref.apiRequest(ref, endpoint, 'Get')
-          }
-          this.endpoints[endpoint] = Object.assign({}, this.endpoints[endpoint], getMethod);
-
-        } else if (this.isDeleteEndpoint(method)) {
-          let endpoint = method.substr(0, method.length - 6)
-          
-          let deleteMethod = {
-            delete: ref.apiRequest(ref, endpoint, 'Delete')
-          }
-          this.endpoints[endpoint] = Object.assign({}, this.endpoints[endpoint], deleteMethod);
-
-        } else if (this.isOptionsEndpoint(method)) {
-          let endpoint = method.substr(0, method.length - 7)
-          
-          let optionsMethod = {
-            options: ref.apiRequest(ref, endpoint, 'Options')
-          }
-          this.endpoints[endpoint] = Object.assign({}, this.endpoints[endpoint], optionsMethod);
-
-        }
-
-      });
-
-      console.log('endpoints', this.endpoints);
-
-    });   */ 
 
   }
 
@@ -104,8 +55,16 @@ export class ApiGatewayService {
     return method.substr(method.length - 6) === 'Delete';
   }
 
-  getRequestMethod(endpoint) {
-      return Regex.RequestMethod(endpoint);
+  post(endpoint) {
+
+  }
+
+  get(endpoint) {
+
+  }
+
+  delete(endpoint) {
+
   }
 
 }

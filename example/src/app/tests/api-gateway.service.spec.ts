@@ -4,6 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 import { ApiGatewayService } from '../../../../lib/api-gateway.service';
 import { AwsService, ApiClientService } from '../../../../index';
+import { Regex } from '../../../../lib/regex.service';
 
 class AwsServiceStub { }
 
@@ -15,7 +16,8 @@ describe('Service: ApiGatewayService', () => {
       providers: [
         ApiGatewayService,
         { provide: AwsService, useValue: AwsServiceStub },
-        { provide: ApiClientService, useValue: ApiClientServiceStub }
+        { provide: ApiClientService, useValue: ApiClientServiceStub },
+        Regex
       ]
     });
   });

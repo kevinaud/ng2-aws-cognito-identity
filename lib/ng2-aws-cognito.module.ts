@@ -9,8 +9,6 @@ import { Regex } from './regex.service';
 
 declare var apigClientFactory: any;
 
-class ApigClientFactory { }
-
 @NgModule({
   providers: [
     ApiClientService,
@@ -27,7 +25,7 @@ export class Ng2AwsCognitoModule {
       ngModule: Ng2AwsCognitoModule,
       providers: [
         { provide: AwsCognitoConfig, useValue: config },
-        { provide: ApigClientFactory }
+        { provide: ApigClientFactory, useValue: apigClientFactory }
       ]
     };
   }
