@@ -15,7 +15,6 @@ export class AwsService {
   constructor(config: AwsCognitoConfig) {
 
     this.config = config;
-    console.log('CONFIG', config);
 
     // Your AWS region
     this.AWS.config.region = config.region; //
