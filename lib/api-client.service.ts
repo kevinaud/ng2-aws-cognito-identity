@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ApigClientFactory } from './apig-client-factory';
-import { IamCredentials } from './iam-credentials';
+import { IAMCredentials } from './iam-credentials';
 import { UserService } from './user.service';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class ApiClientService {
 
       if (authenticated) {
 
-        let iamCredentials: IamCredentials = {
+        let iamCredentials: IAMCredentials = {
           accessKey: '',
           secretKey: '',
           sessionToken: '',

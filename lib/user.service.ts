@@ -7,22 +7,17 @@ import { ApiGatewayService } from './api-gateway.service';
 export class UserService {
 
   public $auth: BehaviorSubject<boolean>;
-  public stub = false;
 
   constructor() {
     this.$auth = new BehaviorSubject(false);
   }
 
   login(username, password) {
-    console.log('real login');
+    
   }
 
   logout() {
 
-  }
-
-  isStub() {
-    return this.stub;
   }
 
 }
