@@ -6,21 +6,18 @@ import { AwsCognitoConfig } from './aws-cognito-config';
 export class AwsService {
 
   authenticated: boolean = false;
-  config;
 
-  AWS = require('aws-sdk');
+  sdk = require('aws-sdk');
   AWSCognito = require('amazon-cognito-identity-js');
   CognitoUserPool = this.AWSCognito.CognitoUserPool;
 
-  constructor(config: AwsCognitoConfig) {
+  constructor(private config: AwsCognitoConfig) {
 
-    this.config = config;
-
-    // Your AWS region
-    this.AWS.config.region = config.region; //
+    // Your sdk region
+    this.sdk.config.region = config.region; //
 
     // Need to provide placeholder keys unless unauthorised user access is enabled for user pool
-    this.AWS.config.update({ accessKeyId: 'anything', secretAccessKey: 'anything' });
+    this.sdk.config.update({ accessKeyId: 'anything', secretAccessKey: 'anything' });
 
     let tokenString = JSON.parse(localStorage.getItem('token'));
 
@@ -39,7 +36,7 @@ export class AwsService {
         let loginObject = {};
         loginObject[loginType] = JSON.parse(localStorage.getItem('token'));
 
-        this.AWS.config.credentials = new this.AWS.CognitoIdentityCredentials({
+        this.sdk.config.credentials = new this.sdk.CognitoIdentityCredentials({
           // This will be the identity pool from your federated identity pool and not your user pool id.
           IdentityPoolId: config.identityPoolId,
           Logins: loginObject
@@ -55,7 +52,7 @@ export class AwsService {
 
   cognitoLogin(username, password, cb){
 
-    var AWS = this.AWS;
+    var sdk = this.sdk;
     var config = this.config;
 
     var authenticationData = {
@@ -85,7 +82,7 @@ export class AwsService {
         localStorage.setItem('token', JSON.stringify(result.getIdToken().getJwtToken()));
         let token = result.getIdToken().getJwtToken();
 
-        /*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        /*sdk.config.credentials = new sdk.CognitoIdentityCredentials({
           // This will be the identity pool from your federated identity pool and not your user pool id.
           IdentityPoolId: 'us-east-1:bfa1fd06-b31e-4b75-b512-3218632ea484',
           Logins: {
@@ -104,7 +101,7 @@ export class AwsService {
         let loginObject = {};
         loginObject[loginType] = result.getIdToken().getJwtToken();
 
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        sdk.config.credentials = new sdk.CognitoIdentityCredentials({
           // This will be the identity pool from your federated identity pool and not your user pool id.
           IdentityPoolId: config.identityPoolId,
           Logins: loginObject
