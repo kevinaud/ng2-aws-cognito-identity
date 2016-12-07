@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-import { ApiGatewayService } from './api-gateway.service';
+import { ApiGatewayService } from "./api-gateway.service";
 
 @Injectable()
 export class UserService {
@@ -13,7 +13,7 @@ export class UserService {
   }
 
   login(username, password) {
-    
+
   }
 
   logout() {

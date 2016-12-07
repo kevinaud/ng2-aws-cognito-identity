@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
-import { IAMCredentials } from './iam-credentials';
-import { LocalStorageService } from './local-storage.service';
+import { IAMCredentials } from "./iam-credentials";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable()
 export class IAMCredentialsService {

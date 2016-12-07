@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, async, inject } from "../example/node_modules/@angular/core/testing";
 
-import { IAMCredentialsService } from '../../../../lib/iam-credentials.service';
-import { LocalStorageService } from '../../../../lib/local-storage.service';
+import { IAMCredentialsService } from "../lib/iam-credentials.service";
+import { LocalStorageService } from "../lib/local-storage.service";
 
 class LocalStorageServiceStub {
 
@@ -27,7 +27,7 @@ class LocalStorageServiceStub {
 
 }
 
-describe('Service: IAMCredentialsService', () => {
+describe("Service: IAMCredentialsService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -37,7 +37,7 @@ describe('Service: IAMCredentialsService', () => {
     });
   });
 
-  it('should ...', inject([ IAMCredentialsService, LocalStorageService ], (service: IAMCredentialsService, storage) => {
+  it("should ...", inject([ IAMCredentialsService, LocalStorageService ], (service: IAMCredentialsService, storage) => {
     expect(service).toBeTruthy();
     console.log(storage);
     console.log(storage.storage);
