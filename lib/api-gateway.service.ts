@@ -62,7 +62,8 @@ export class ApiGatewayService {
   }
 
   private makeFunction(endpoint: string, request: string){
-    switch(request){
+    return function() {}
+    /*switch(request){
       case "Post":
         return function(params, body, addParams){
                
@@ -78,6 +79,6 @@ export class ApiGatewayService {
       default:
         console.error("Error: " + request + " is not a valid request");
         break;
-    } 
+    }*/ 
   }
 }
