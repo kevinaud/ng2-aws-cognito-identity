@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { TestBed, async, inject, fakeAsync, tick } from "../example/node_modules/@angular/core/testing";
 import { Injectable } from "../example/node_modules/@angular/core";
-import { BehaviorSubject } from "../example/node_modules/rxjs";
+import { BehaviorSubject, Observable } from "../example/node_modules/rxjs";
 
 import { ApiClientService } from "../lib/api-client.service";
 import { ApigClientFactory } from "../lib/apig-client-factory";
