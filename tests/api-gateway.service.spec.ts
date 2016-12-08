@@ -4,6 +4,7 @@ import { BehaviorSubject } from "rxjs";
 
 import { ApiGatewayService } from "../lib/api-gateway.service";
 import { AwsService, ApiClientService } from "../index";
+import { Match } from "../lib/match.service";
 
 class AwsServiceStub { }
 
@@ -23,11 +24,10 @@ class ApiClientServiceStub {
     podcastFakemethodtype: function() {},
     podcastEpisodeGet: function() {},
     podcastEpisodePost: function() {},
-    podcastEpisodeDelete: function() {},
     podcastEpisodePut: function() {},
     podcastEpisodeOptions: function() {},
     podcastEpisodeHead: function() {},
-    podcastEpisodeAny: function() {},
+    //podcastEpisodeAny: function() {},
     podcastEpisodePatch: function() {},
     podcastEpisodeFakemethodtype: function() {},
     podcastPostPost: function() {}
@@ -48,8 +48,9 @@ describe("Service: ApiGatewayService", () => {
     TestBed.configureTestingModule({
       providers: [
         ApiGatewayService,
+        Match,
         { provide: AwsService, useValue: AwsServiceStub },
-        { provide: ApiClientService, useValue: ApiClientServiceStub }
+        { provide: ApiClientService, useValue: new ApiClientServiceStub() }
       ]
     });
   });
@@ -89,16 +90,15 @@ describe("Service: ApiGatewayService", () => {
     expect(service.endpoints["podcast"].head).toBeDefined();
     expect(service.endpoints["podcast"].any).toBeDefined();
     expect(service.endpoints["podcast"].patch).toBeDefined();
-    expect(service.endpoints["podcast"].fakemethodtype).toBeDefined();
     expect(service.endpoints["podcastEpisode"].get).toBeDefined();
     expect(service.endpoints["podcastEpisode"].post).toBeDefined();
     expect(service.endpoints["podcastEpisode"].put).toBeDefined();
     expect(service.endpoints["podcastEpisode"].options).toBeDefined();
     expect(service.endpoints["podcastEpisode"].head).toBeDefined();
     expect(service.endpoints["podcastEpisode"].patch).toBeDefined();
-    expect(service.endpoints["podcastEpisode"].any).toBeUndefined();
     expect(service.endpoints["podcastPost"].post).toBeDefined();
 
+    expect(service.endpoints["podcastEpisode"].any).toBeUndefined();
     expect(service.endpoints["podcastEpisode"].delete).toBeUndefined();
     expect(service.endpoints["podcastEpisode"].fakemethodtype).toBeUndefined();
 

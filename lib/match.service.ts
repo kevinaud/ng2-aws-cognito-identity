@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Match{
-    private RequestMethodExpr = XRegExp("(Post|Delete|Options|Get|Put|Head|Patch)$");
+    private RequestMethodExpr = XRegExp("(Post|Delete|Options|Get|Put|Head|Patch|Any)$");
     private FirstPathElement = XRegExp("^[a-z]*");
 
     public requestMethod(funcName: string){
@@ -11,7 +11,7 @@ export class Match{
         if(match)
             return match[0];
         else
-            return null;
+            return "";
         
     }
 
@@ -25,13 +25,16 @@ export class Match{
         if(match)
             return match[0];
         else
-            return null;
+            return "";
     }
 
     public getPathElements(funcName: string){
 
-        return funcName.split(/(?=[A-Z])/).map((s) => {
-            return s.toLowerCase();
-        });
+        if(funcName)
+            return funcName.split(/(?=[A-Z])/).map((s) => {
+                return s.toLowerCase();
+            });
+       else
+           return null;
     }
 }

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 // import { BlogPost } from "../blog/blog-post";
 import { AwsService } from "./aws.service";
 import { ApiClientService } from "./api-client.service";
+import { Match } from "./match.service";
 
 @Injectable()
 export class ApiGatewayService {
@@ -13,7 +14,8 @@ export class ApiGatewayService {
 
   endpoints = null;
 
-  constructor(private aws: AwsService, private apiClientService: ApiClientService) {
+  constructor(private aws: AwsService, private apiClientService: ApiClientService, 
+              private match: Match) {
 
     let ref = this;
 
@@ -38,8 +40,28 @@ export class ApiGatewayService {
   }
 
   private loadEndpoints() {
-    console.log(Object.keys(this.client));
-    return this.endpoints;
+    let ref = this;
+    ref.endpoints = {};
+
+    Object.keys(this.client).forEach((func) => {
+        let method = ref.match.requestMethod(func);
+        let endpoint = ref.match.removeRequestMethod(func);
+
+        if(method){
+            if(!ref.endpoints.hasOwnProperty(endpoint)){
+                ref.endpoints[endpoint] = {};
+            }
+
+            ref.endpoints[endpoint][method] = function(params, body, addParams){
+                //ref.client[
+            }
+        }
+        else{
+            console.error("ERROR: " + func + " is not a valid method");
+        }
+    });
+
+    return ref.endpoints;
   }
 
 }
