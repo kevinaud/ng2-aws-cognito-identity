@@ -30,7 +30,6 @@ export class AwsService {
 
         this.authenticated = true;
         this.setToken(token);
-        console.log("token set");
 
       } else {
         localStorage.removeItem("token");
