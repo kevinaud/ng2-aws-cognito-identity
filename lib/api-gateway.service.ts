@@ -31,11 +31,10 @@ export class ApiGatewayService {
     return function(params, body, additionalParams) {
       let promise = ref.client[endpoint + requestType](params, body, additionalParams);
 
-      return Observable.fromPromise(promise)
-                .map((s) => {
-                  let response: any = s;
-                  return response.data;
-                });
+      return Observable.fromPromise(promise).map((s) => {
+        let response: any = s;
+        return response.data;
+      });
     };
   }
 
@@ -44,24 +43,41 @@ export class ApiGatewayService {
     ref.endpoints = {};
 
     Object.keys(this.client).forEach((func) => {
-        let method = ref.match.requestMethod(func);
-        let endpoint = ref.match.removeRequestMethod(func);
+      let method = ref.match.requestMethod(func);
+      let endpoint = ref.match.removeRequestMethod(func);
 
-        if(method){
-            if(!ref.endpoints.hasOwnProperty(endpoint)){
-                ref.endpoints[endpoint] = {};
-            }
+      if(method){
+        if(!ref.endpoints.hasOwnProperty(endpoint)){
+          ref.endpoints[endpoint] = {};
+        }
 
-            ref.endpoints[endpoint][method] = function(params, body, addParams){
-                //ref.client[
-            }
-        }
-        else{
-            console.error("ERROR: " + func + " is not a valid method");
-        }
+        ref.endpoints[endpoint][method.toLowerCase()] = ref.makeFunction(endpoint,method);
+      }
+      else{
+        console.error("ERROR: " + func + " is not a valid method");
+      }
     });
 
     return ref.endpoints;
   }
 
+  private makeFunction(endpoint: string, request: string){
+    switch(request){
+      case "Post":
+        return function(params, body, addParams){
+               
+        }
+        break;
+
+      case "Get":
+        return function(params, addParams){
+
+        }
+        break;
+
+      default:
+        console.error("Error: " + request + " is not a valid request");
+        break;
+    } 
+  }
 }
