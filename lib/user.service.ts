@@ -3,17 +3,32 @@ import { BehaviorSubject, Observable } from "rxjs";
 
 import { ApiGatewayService } from "./api-gateway.service";
 import { AwsService } from "./aws.service";
+import { LocalStorageService } from "./local-storage.service";
 
 @Injectable()
 export class UserService {
 
   public $auth: BehaviorSubject<boolean>;
+  public flag = false;
 
-  constructor(private aws: AwsService) {
+  constructor(private aws: AwsService, private storage: LocalStorageService) {
     this.$auth = new BehaviorSubject(false);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    let token = this.storage.getItem("token");
+    if (token) {
+      console.log("token found");
+    } else {
+      console.log("no token found");
+    }
+    
+  }
+
+  initializeFromToken(token) {
+
+  }
 
   login(username, password): Observable<any> {
 
@@ -39,6 +54,10 @@ export class UserService {
   logout() {
     this.$auth.next(false);
     localStorage.removeItem("token");
+  }
+
+  inititializeFromToken() {
+
   }
 
 }
