@@ -1,8 +1,10 @@
 /* tslint:disable:no-unused-variable */
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { QuestionService } from '../forms/question.service';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -11,7 +13,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers: [ QuestionService ]
     })
     .compileComponents();
   }));
