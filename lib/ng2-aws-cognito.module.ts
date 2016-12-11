@@ -2,9 +2,11 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 
 import { ApiClientService } from "./api-client.service";
 import { ApiGatewayService } from "./api-gateway.service";
+import { ApigClientFactory } from "./apig-client-factory";
 import { AwsService } from "./aws.service";
 import { AwsCognitoConfig } from "./aws-cognito-config";
-import { ApigClientFactory } from "./apig-client-factory";
+import { LocalStorageService } from "./local-storage.service";
+import { UserService } from "./user.service";
 
 declare var apigClientFactory: any;
 
@@ -23,7 +25,10 @@ export class Ng2AwsCognitoModule {
       ngModule: Ng2AwsCognitoModule,
       providers: [
         { provide: AwsCognitoConfig, useValue: config },
-        { provide: ApigClientFactory, useValue: apigClientFactory }
+        { provide: ApigClientFactory, useValue: apigClientFactory },
+        AwsService,
+        LocalStorageService,
+        UserService
       ]
     };
   }

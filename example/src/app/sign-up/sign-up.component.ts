@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'ng2-aws-cognito';
 
 import { QuestionService } from '../forms/question.service';
 
@@ -9,7 +10,7 @@ import { QuestionService } from '../forms/question.service';
 })
 export class SignUpComponent implements OnInit {
 
-questions;
+  questions;
   waiting = false;
   responseReceived = false;
   response = {
@@ -17,19 +18,26 @@ questions;
     message: ''
   };
 
-  constructor(private service: QuestionService /*, private userService: UserService*/) {
-    this.questions = service.getSignUpQuestions();
-  }
+  constructor(
+    private questionService: QuestionService,
+    private userService: UserService) { }
 
   ngOnInit() {
-
+    this.questions = this.questionService.getSignUpQuestions();
   }
 
   onSubmit(event) {
 
-    /*this.waiting = true;
+    let user = {
+      email: event.email,
+      username: event.username,
+      password: event.password
+    };
 
-    this.userService.login(event.username, event.password).then(
+    console.log(user);
+
+    /*this.waiting = true;
+    this.userService.signUp(user).then(
       (success) => {
       
         console.log(success);
@@ -46,17 +54,8 @@ questions;
       (error) => {
         this.waiting = false;
         console.log(error);
-      });
-    this.responseReceived = false;
-    this.waiting = true;
+      });*/
 
-    this.mailchimp.subscribeToRecruitment(event).subscribe((response) => {
-
-      this.waiting = false;
-      this.response = response.json();
-      this.responseReceived = true;
-
-    });*/
   }
 
 }

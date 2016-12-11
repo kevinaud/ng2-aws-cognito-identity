@@ -4,8 +4,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { UserService } from 'ng2-aws-cognito';
 import { QuestionService } from '../forms/question.service';
 import { LoginComponent } from './login.component';
+
+class UserServiceStub { }
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,7 +18,10 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      providers: [ QuestionService ]
+      providers: [
+        QuestionService,
+        { provide: UserService, useValue: UserServiceStub }
+      ]
     })
     .compileComponents();
   }));
