@@ -7,6 +7,7 @@ import { ApiClientService } from "../lib/api-client.service";
 import { ApigClientFactory } from "../lib/apig-client-factory";
 import { AwsService } from "../lib/aws.service";
 import { UserService } from "../lib/user.service";
+import { LocalStorageService } from "../lib/local-storage.service";
 
 class AwsServiceStub {
 
@@ -61,9 +62,13 @@ describe("Service: ApiClientService", () => {
         { provide: AwsService, useValue: AwsServiceStub },
         { provide: ApigClientFactory, useValue: apigClientFactoryStub},
         // { provide: UserService, useValue: UserServiceStub },
-        UserService
+        UserService,
+        LocalStorageService
       ]
     });
+
+    let userService = TestBed.get(UserService);
+    userService.ngOnInit();
   });
 
   it("should ...", inject([ ApiClientService ], (service: ApiClientService) => {
