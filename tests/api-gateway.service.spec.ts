@@ -82,6 +82,7 @@ describe("Service: ApiGatewayService", () => {
 
   it("should put the right request methods on each endpoint", inject([ ApiGatewayService ], (service: ApiGatewayService) => {
 
+    console.log("checking endpoints");
     expect(service.endpoints["podcast"].get).toBeDefined();
     expect(service.endpoints["podcast"].post).toBeDefined();
     expect(service.endpoints["podcast"].delete).toBeDefined();
@@ -101,6 +102,7 @@ describe("Service: ApiGatewayService", () => {
     expect(service.endpoints["podcastEpisode"].any).toBeUndefined();
     expect(service.endpoints["podcastEpisode"].delete).toBeUndefined();
     expect(service.endpoints["podcastEpisode"].fakemethodtype).toBeUndefined();
+    console.log("finished checking endpoints");
 
   }));
 });

@@ -65,7 +65,10 @@ export class ApiGatewayService {
     let ref = this;
 
     return function(params, body, addParams){
-        ref.client[endpoint + request](params, body, addParams);
+      return Observable.fromPromise(ref.client[endpoint + request](params, body, addParams))
+      .map((s) => { 
+          return s; 
+      });
     }
   }
 }
