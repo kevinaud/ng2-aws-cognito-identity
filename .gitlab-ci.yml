@@ -1,7 +1,7 @@
 image: node:latest
 
 before_script:
-- ci/install-chrome
+- sudo ci/install-chrome
 
 cache:
   paths:
