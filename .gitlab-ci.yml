@@ -1,7 +1,7 @@
 image: node:latest
 
 before_script:
-- sudo ci/install-chrome
+# - sudo ci/install-chrome
 #!/bin/bash
 - set -xe
 - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
