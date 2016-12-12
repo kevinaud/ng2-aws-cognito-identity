@@ -8,7 +8,7 @@ cache:
 test_app:
   script:
    - npm install
-   - npm install angular-cli@1.0.0-beta.18
+   - npm install -g angular-cli@1.0.0-beta.18
    - cd example
    - npm install
    - ng test
