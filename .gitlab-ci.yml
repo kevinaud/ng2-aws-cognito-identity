@@ -1,0 +1,14 @@
+image: node:latest
+
+cache:
+  paths:
+  - node_modules/
+  - example/node_modules/
+
+test_app:
+  script:
+   - npm install
+   - npm install -g angular-cli@1.0.0-beta.18
+   - cd example
+   - npm install
+   - ng test
