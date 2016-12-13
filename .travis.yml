@@ -28,7 +28,6 @@ before_install:
 before_script:
 - ng -v || npm install -g angular-cli@1.0.0-beta.18
 - karma --version || npm install -g karma
-- npm install -g karma
 - cd example
 - npm install
 - ng build
