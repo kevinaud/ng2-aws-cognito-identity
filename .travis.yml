@@ -17,7 +17,7 @@ cache:
   directories:
   - node_modules
   - example/node_modules
-  - $(npm config get prefix)/bin/angular-cli
+  - $(npm config get prefix)/bin/ng
   - $(npm config get prefix)/bin/karma
 
 before_install:
