@@ -26,8 +26,8 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 
 before_script:
-- [ $(node -p "require('angular-cli/package.json').version") != "1.0.0-beta.18" ] && npm install angular-cli@1.0.0-beta.18
-- [ $(node -p "require('karma/package.json').version") != "1.3.0" ] && npm install karma@1.3.0
+- npm list -g angular-cli --depth=0 || npm install -g angular-cli@1.0.0-beta-18
+- npm list -g angular-cli --depth=0 || npm install -g karma
 - npm install -g karma
 - cd example
 - npm install
