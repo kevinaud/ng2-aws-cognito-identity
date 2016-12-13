@@ -13,6 +13,12 @@ apt:
   - google-chrome-stable
   - google-chrome-beta
 
+cache:
+  directories:
+  - node_modules
+  - example/node_modules
+  - $(npm config get prefix)/bin/angular-cli
+
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
@@ -21,8 +27,9 @@ before_install:
 before_script:
 - npm install -g angular-cli@1.0.0-beta.18
 - npm install -g karma
+- cd example
 - npm install
-- cd example && ng build
+- ng build
 
 script: karma start karma.conf.js --single-run
 
