@@ -135,6 +135,7 @@ export class AwsService {
 
     // Here we"ll set our Cognito user pool id. We"ll check to see if a user logged in by getting the token from
     // localStorage which we will implement later
+    //
     let loginObject = {};
     loginObject[loginType] = token;
 
