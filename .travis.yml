@@ -26,13 +26,13 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 
 before_script:
-- $(npm config get prefix)/bin/ng -v || npm install -g angular-cli@1.0.0-beta.18
-- $(npm config get prefix)/bin/karma --version || npm install -g karma
+- ./node_modules/angular-cli/bin/ng -v || npm install angular-cli@1.0.0-beta.18
+- ./node_modules/karma/bin/karma --version || npm install karma
 - cd example
 - npm install
-- $(npm config get prefix)/bin/ng build
+- ../node_modules/angular-cli/bin/ng build
 
-script: $(npm config get prefix)/bin/karma start karma.conf.js --single-run
+script: ../node_modules/karma/bin/karma start karma.conf.js --single-run
 #
 #before_deploy: "rm -rf ./dist && ng build --prod"
 
