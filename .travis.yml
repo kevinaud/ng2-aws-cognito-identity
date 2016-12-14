@@ -33,7 +33,7 @@ before_script:
 - $(npm config get prefix)/bin/ng build
 
 script: $(npm config get prefix)/bin/karma start karma.conf.js --single-run
-
+#
 #before_deploy: "rm -rf ./dist && ng build --prod"
 
 #deploy:
