@@ -34,6 +34,7 @@ before_script:
 
 script: ../node_modules/karma/bin/karma start karma.conf.js --single-run
 #
+#
 #before_deploy: "rm -rf ./dist && ng build --prod"
 
 #deploy:
