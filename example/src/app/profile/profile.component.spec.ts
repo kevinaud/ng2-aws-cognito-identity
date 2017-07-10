@@ -1,5 +1,4 @@
 /* tslint:disable:no-unused-variable */
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -7,7 +6,7 @@ import { DebugElement } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from 'ng2-aws-cognito';
 
-import { HomeComponent } from './home.component';
+import { ProfileComponent } from './profile.component';
 
 class UserServiceStub {
 
@@ -15,14 +14,13 @@ class UserServiceStub {
 
 }
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('ProfileComponent', () => {
+  let component: ProfileComponent;
+  let fixture: ComponentFixture<ProfileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      declarations: [ ProfileComponent ],
       providers:[
         { provide: UserService, useValue: UserServiceStub }
       ]
@@ -31,7 +29,7 @@ describe('HomeComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -121,7 +121,7 @@ describe("Service: UserService", () => {
 
   }));
 
-  it("should try to initialize auth status if a token is stored already", 
+  it("should not try to initialize auth status if no stored token is found", 
     inject([ UserService ], (service: UserService) => {
 
     let storage = TestBed.get(LocalStorageService);

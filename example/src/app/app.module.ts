@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@angular/material';
 
-import { Ng2AwsCognitoModule, AwsCognitoConfig } from '../../../index';
+import { Ng2AwsCognitoModule, AwsCognitoConfig } from 'ng2-aws-cognito';
+
 import { routing } from './app.routing';
 import { NavModule } from './nav/nav.module';
 import { FormsModule } from './forms/forms.module';
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ProfileComponent } from './profile/profile.component';
 
 let awsCognitoConfig = {
   region: 'us-east-1',
@@ -27,7 +29,8 @@ let awsCognitoConfig = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     MaterialModule.forRoot(),

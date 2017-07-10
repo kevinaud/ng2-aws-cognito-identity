@@ -33,18 +33,3 @@ before_script:
 - ../node_modules/angular-cli/bin/ng build
 
 script: ../node_modules/karma/bin/karma start karma.conf.js --single-run
-#
-#
-#before_deploy: "rm -rf ./dist && ng build --prod"
-
-#deploy:
-#  provider: s3
-#  access_key_id: AKIAJM2YK4W7RFFHWUHA
-#  secret_access_key:
-#    secure: Bj6G8nSclL1akaVjreJ6sBqDdGD0V6Ifur31X/L2jG/WgIdSAbhb3xQtct3Jmp4N3Nkj+qr8+lZen3vX7OYPBNG4Cd0YOKbT+lWiU6YFdyUN+XUagWTZPWO9WGHw7U7pocwTkrtoFubrKfMlPrkJl6lVAmjEY9/mmGm74+u3wXM2iFUkWXh7HjUoXYQtGb2E2Wj9KRur0EO0r7eVL0uA1+HZ4m7XGOMCn1PdE67wlP5rIsfYbBM4Ju278h7G46Bo5nCYNGpSmT6idVHSaY/yGg9uxxh#+xOMvEYuiaPXzW/cBmPg3ZFQGFmB5h39PxtiAUA1nMNZZxIaYKEc/54hFUkAMMc831JtPcHeZ4HnUSROeSAP9KNrFTPwTb8YoUcz9hes/ZKshuYXF4Tg5jbaukRsDqMY+/YRDYiuqeHG9lNE2YCjGK0ZawqVfexZfbUjeDMLnGokgOJuof7aGTsE/U6hRaddSE8I5bsCAn2jdhRdYPWq5F0HOtMsgWgIaScUUM3nEn4cduc0oj0Bc8n0KCV7BGCT7Kg2hl7/PC7nxSaNFxf#+15X4lzlMSMEUSJYWyAFbumd004rAGw/Jc4uxLMNbZQk7YJtIYVJyc++VcsDr5BqShY1qSz1vsFDqygPS6UBe2z3T//4/x3kJFZMqWH8f11WOZ6JTsmMGDGFO5Yng=
-#  bucket: sigepbaylor.org
-#  local-dir: dist
-#  acl: public_read
-#  skip_cleanup: true
-#  on:
-#    repo: kevinaud/sigep-site-v3

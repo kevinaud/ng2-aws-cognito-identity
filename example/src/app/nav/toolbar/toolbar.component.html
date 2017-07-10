@@ -7,9 +7,9 @@
 
   <a class="title" [routerLink]="['/home']">Ng2 Aws Cognito Example</a>
 
-  <!--<button md-button 
+  <button md-button 
     (click)="logout()" 
     class="logout-btn"
-    *ngIf="authenticated | async">LOGOUT</button>-->
+    *ngIf="user.$auth | async">LOGOUT</button>
 
 </md-toolbar>
