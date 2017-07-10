@@ -33,7 +33,7 @@ let awsCognitoConfig = {
     ProfileComponent
   ],
   imports: [
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserModule,
     HttpModule,
     RouterModule,
