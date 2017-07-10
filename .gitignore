@@ -6,8 +6,10 @@
 
 # dependencies
 /node_modules
-/example/node_modules
 /example/bower_components
+/example/node_modules
+/example-old/node_modules
+/example-old/bower_components
 
 # IDEs and editors
 /.idea
@@ -16,6 +18,8 @@
 .classpath
 *.launch
 .settings/
+.*.swp
+.*.swo
 
 # misc
 /.sass-cache
