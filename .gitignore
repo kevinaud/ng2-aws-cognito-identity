@@ -4,6 +4,9 @@
 /example/dist
 /example/tmp
 
+/example-old/dist
+/example-old/tmp
+
 # dependencies
 /node_modules
 /example/bower_components
@@ -25,14 +28,18 @@
 /.sass-cache
 /connect.lock
 /example/coverage/*
+/example-old/coverge/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
 /example/typings
+/example-old/typings
 
 # e2e
 /example/e2e/*.js
 /example/e2e/*.map
+/example-old/e2e/*.js
+/example-old/e2e/*.map
 
 #System Files
 .DS_Store
