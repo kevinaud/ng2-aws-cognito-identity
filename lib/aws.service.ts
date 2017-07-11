@@ -2,6 +2,9 @@ import { Injectable, Optional } from "@angular/core";
 
 import { AwsCognitoConfig } from "./aws-cognito-config";
 
+//import * as sdk from "aws-sdk";
+//import * as AWSCognito from "amazon-cognito-identity-js";
+
 @Injectable()
 export class AwsService {
 

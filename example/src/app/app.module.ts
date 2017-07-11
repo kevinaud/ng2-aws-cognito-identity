@@ -40,7 +40,7 @@ let awsCognitoConfig = {
     routing,
     NavModule,
     FormsModule,
-    Ng2AwsCognitoModule.forRoot(awsCognitoConfig),
+    Ng2AwsCognitoModule.initIdentityPool(awsCognitoConfig),
   ],
   providers: [
     

@@ -15,7 +15,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   imports: [
     BrowserModule,
     RouterModule,
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   exports: [
     ToolbarComponent,
